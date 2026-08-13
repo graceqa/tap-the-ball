@@ -6,26 +6,16 @@ const messageDisplay = document.getElementById('message');
 let missedBalls = 0;
 let gameInterval;
 let ballsOnScreen = 0;
-let spawnRate = 500;
+let spawnRate = 1000;
 let maxBalls = 1;
-let ballLifetime = 1500;
+let ballLifetime = 2000;
+let timeElapsed = 0;
+let gameTimer;
 
 const RAINBOW_COLORS = [
-    '#FF0000', // Red
-    '#FF7F00', // Orange
-    '#FFFF00', // Yellow
-    '#00FF00', // Green
-    '#0000FF', // Blue
-    '#4B0082', // Indigo
-    '#9400D3', // Violet
-    '#FF00FF', // Magenta
-    '#00FFFF', // Cyan
-    '#FF1493', // Deep Pink
-    '#32CD32', // Lime Green
-    '#FFD700', // Gold
-    '#FF4500', // Orange Red
-    '#1E90FF', // Dodger Blue
-    '#008080'  // Teal
+    '#FF0000', '#FF7F00', '#FFFF00', '#00FF00', '#0000FF', 
+    '#4B0082', '#9400D3', '#FF00FF', '#00FFFF', '#FF1493', 
+    '#32CD32', '#FFD700', '#FF4500', '#1E90FF', '#008080'
 ];
 
 startBtn.addEventListener('click', startGame);
@@ -33,14 +23,16 @@ startBtn.addEventListener('click', startGame);
 function startGame() {
     missedBalls = 0;
     ballsOnScreen = 0;
-    spawnRate = 500;
+    spawnRate = 1000;
     maxBalls = 1;
-    ballLifetime = 1500;
+    ballLifetime = 2000;
+    timeElapsed = 0;
     missedBallsDisplay.textContent = 'Missed balls: 0';
     messageDisplay.textContent = '';
     startBtn.style.display = 'none';
     gameFrame.innerHTML = '';
     gameInterval = setInterval(gameLoop, spawnRate);
+    gameTimer = setInterval(increaseDifficultyOverTime, 1000);
 }
 
 function gameLoop() {
@@ -57,7 +49,6 @@ function createBall() {
     ball.style.left = `${x}px`;
     ball.style.top = `${y}px`;
 
-    // Assign a random rainbow color
     const randomColor = RAINBOW_COLORS[Math.floor(Math.random() * RAINBOW_COLORS.length)];
     ball.style.backgroundColor = randomColor;
 
@@ -75,7 +66,6 @@ function createBall() {
             missedBalls++;
             missedBallsDisplay.textContent = `Missed balls: ${missedBalls}`;
             ballsOnScreen--;
-            increaseDifficulty();
             if (missedBalls >= 15) {
                 endGame();
             }
@@ -83,17 +73,18 @@ function createBall() {
     }, ballLifetime);
 }
 
-function increaseDifficulty() {
-    if (missedBalls > 0 && missedBalls % 5 === 0) {
-        if (spawnRate > 100) {
-            spawnRate -= 50;
+function increaseDifficultyOverTime() {
+    timeElapsed++;
+    if (timeElapsed >= 30 && timeElapsed % 10 === 0) {
+        if (spawnRate > 200) {
+            spawnRate -= 100;
             clearInterval(gameInterval);
             gameInterval = setInterval(gameLoop, spawnRate);
         }
-        if (ballLifetime > 500) {
-            ballLifetime -= 300;
+        if (ballLifetime > 600) {
+            ballLifetime -= 200;
         }
-        if (maxBalls < 3) {
+        if (maxBalls < 5) {
             maxBalls++;
         }
     }
@@ -101,6 +92,7 @@ function increaseDifficulty() {
 
 function endGame() {
     clearInterval(gameInterval);
+    clearInterval(gameTimer);
     messageDisplay.textContent = 'Nice try!';
     startBtn.style.display = 'block';
 }
