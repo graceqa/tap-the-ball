@@ -10,6 +10,16 @@ let spawnRate = 500;
 let maxBalls = 1;
 let ballLifetime = 2000;
 
+const RAINBOW_COLORS = [
+    '#FF0000', // Red
+    '#FF7F00', // Orange
+    '#FFFF00', // Yellow
+    '#00FF00', // Green
+    '#0000FF', // Blue
+    '#4B0082', // Indigo
+    '#9400D3'  // Violet
+];
+
 startBtn.addEventListener('click', startGame);
 
 function startGame() {
@@ -38,6 +48,10 @@ function createBall() {
     const y = Math.random() * (gameFrame.clientHeight - 50);
     ball.style.left = `${x}px`;
     ball.style.top = `${y}px`;
+
+    // Assign a random rainbow color
+    const randomColor = RAINBOW_COLORS[Math.floor(Math.random() * RAINBOW_COLORS.length)];
+    ball.style.backgroundColor = randomColor;
 
     ball.addEventListener('click', () => {
         ball.remove();
