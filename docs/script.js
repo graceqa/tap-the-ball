@@ -8,6 +8,7 @@ let gameInterval;
 let ballsOnScreen = 0;
 let spawnRate = 500;
 let maxBalls = 1;
+let ballLifetime = 2000;
 
 startBtn.addEventListener('click', startGame);
 
@@ -16,6 +17,7 @@ function startGame() {
     ballsOnScreen = 0;
     spawnRate = 500;
     maxBalls = 1;
+    ballLifetime = 2000;
     missedBallsDisplay.textContent = 'Missed balls: 0';
     messageDisplay.textContent = '';
     startBtn.style.display = 'none';
@@ -27,7 +29,6 @@ function gameLoop() {
     if (ballsOnScreen < maxBalls) {
         createBall();
     }
-    increaseDifficulty();
 }
 
 function createBall() {
@@ -52,11 +53,12 @@ function createBall() {
             missedBalls++;
             missedBallsDisplay.textContent = `Missed balls: ${missedBalls}`;
             ballsOnScreen--;
+            increaseDifficulty();
             if (missedBalls >= 15) {
                 endGame();
             }
         }
-    }, spawnRate);
+    }, ballLifetime);
 }
 
 function increaseDifficulty() {
@@ -65,6 +67,9 @@ function increaseDifficulty() {
             spawnRate -= 50;
             clearInterval(gameInterval);
             gameInterval = setInterval(gameLoop, spawnRate);
+        }
+        if (ballLifetime > 500) {
+            ballLifetime -= 250;
         }
         if (maxBalls < 3) {
             maxBalls++;
