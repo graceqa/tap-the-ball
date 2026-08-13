@@ -1,0 +1,49 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f0f0f0;
+    margin: 0;
+    font-family: sans-serif;
+}
+
+#game-container {
+    text-align: center;
+}
+
+#game-frame {
+    width: 80vw;
+    height: 80vh;
+    border: 2px solid #333;
+    position: relative;
+    margin: 0 auto;
+    background-color: #fff;
+}
+
+.ball {
+    width: 50px;
+    height: 50px;
+    background-color: red;
+    border-radius: 50%;
+    position: absolute;
+    cursor: pointer;
+}
+
+#start-btn {
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-size: 1.2em;
+    cursor: pointer;
+}
+
+#missed-balls {
+    margin-top: 10px;
+    font-size: 1.2em;
+}
+
+#message {
+    margin-top: 10px;
+    font-size: 1.5em;
+    color: green;
+}

@@ -1,0 +1,11 @@
+{
+  "skill_api_version": "1.0",
+  "name": "tap-the-ball",
+  "description": "A fun tap the ball game.",
+  "publisher": "Grace Gonzalez",
+  "readme": "SKILL.md",
+  "entry_point": {
+    "type": "web_ui",
+    "path": "assets/index.html"
+  }
+}
