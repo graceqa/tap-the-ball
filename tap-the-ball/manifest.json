@@ -6,6 +6,6 @@
   "readme": "SKILL.md",
   "entry_point": {
     "type": "web_ui",
-    "path": "assets/index.html"
+    "path": "docs/index.html"
   }
 }
