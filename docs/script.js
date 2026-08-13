@@ -44,8 +44,33 @@ function gameLoop() {
 function createBall() {
     const ball = document.createElement('div');
     ball.classList.add('ball');
-    const x = Math.random() * (gameFrame.clientWidth - 50);
-    const y = Math.random() * (gameFrame.clientHeight - 50);
+    
+    let x, y, isValidPosition;
+    let maxRetries = 20;
+    let retries = 0;
+
+    do {
+        x = Math.random() * (gameFrame.clientWidth - 50);
+        y = Math.random() * (gameFrame.clientHeight - 50);
+        isValidPosition = true;
+        const existingBalls = document.querySelectorAll('.ball');
+        for (const existingBall of existingBalls) {
+            const existingX = parseFloat(existingBall.style.left);
+            const existingY = parseFloat(existingBall.style.top);
+            const distance = Math.sqrt(Math.pow(x - existingX, 2) + Math.pow(y - existingY, 2));
+            if (distance < 50) { // 50 is the ball's diameter
+                isValidPosition = false;
+                break;
+            }
+        }
+        retries++;
+    } while (!isValidPosition && retries < maxRetries);
+
+    if (!isValidPosition) {
+        // Could not find a valid position after maxRetries, so don't spawn a ball this time.
+        return;
+    }
+
     ball.style.left = `${x}px`;
     ball.style.top = `${y}px`;
 
