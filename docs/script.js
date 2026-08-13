@@ -8,7 +8,7 @@ let gameInterval;
 let ballsOnScreen = 0;
 let spawnRate = 500;
 let maxBalls = 1;
-let ballLifetime = 2000;
+let ballLifetime = 1500;
 
 const RAINBOW_COLORS = [
     '#FF0000', // Red
@@ -17,7 +17,15 @@ const RAINBOW_COLORS = [
     '#00FF00', // Green
     '#0000FF', // Blue
     '#4B0082', // Indigo
-    '#9400D3'  // Violet
+    '#9400D3', // Violet
+    '#FF00FF', // Magenta
+    '#00FFFF', // Cyan
+    '#FF1493', // Deep Pink
+    '#32CD32', // Lime Green
+    '#FFD700', // Gold
+    '#FF4500', // Orange Red
+    '#1E90FF', // Dodger Blue
+    '#008080'  // Teal
 ];
 
 startBtn.addEventListener('click', startGame);
@@ -27,7 +35,7 @@ function startGame() {
     ballsOnScreen = 0;
     spawnRate = 500;
     maxBalls = 1;
-    ballLifetime = 2000;
+    ballLifetime = 1500;
     missedBallsDisplay.textContent = 'Missed balls: 0';
     messageDisplay.textContent = '';
     startBtn.style.display = 'none';
@@ -83,7 +91,7 @@ function increaseDifficulty() {
             gameInterval = setInterval(gameLoop, spawnRate);
         }
         if (ballLifetime > 500) {
-            ballLifetime -= 250;
+            ballLifetime -= 300;
         }
         if (maxBalls < 3) {
             maxBalls++;
