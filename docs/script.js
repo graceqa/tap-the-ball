@@ -124,7 +124,7 @@ function createBall() {
             missedBalls++;
             missedBallsDisplay.textContent = `Missed balls: ${missedBalls}`;
             ballsOnScreen--;
-            if (missedBalls >= 3) {
+            if (missedBalls >= 15) {
                 endGame();
             }
         }
