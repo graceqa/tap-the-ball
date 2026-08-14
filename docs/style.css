@@ -3,7 +3,12 @@ body {
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background: linear-gradient(135deg, #6200EA 0%, #9C27B0 100%); /* Vibrant deep purple-to-violet gradient */
+    background: 
+        radial-gradient(circle, #FF00FF 10%, transparent 11%), /* Magenta dots */
+        radial-gradient(circle, #00FFFF 10%, transparent 11%), /* Cyan dots */
+        #1a1a1a; /* Dark background */
+    background-size: 30px 30px, 30px 30px;
+    background-position: 0 0, 15px 15px;
     margin: 0;
     font-family: sans-serif;
 }
