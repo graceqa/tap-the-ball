@@ -12,8 +12,8 @@ body {
 }
 
 #game-frame {
-    width: 80vw;
-    height: 80vh;
+    width: 800px; /* Fixed width */
+    height: 600px; /* Fixed height */
     border: none; /* Removed border */
     position: relative;
     margin: 0 auto;

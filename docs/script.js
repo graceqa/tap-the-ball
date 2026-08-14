@@ -58,7 +58,7 @@ function startGame() {
     timeElapsed = 0;
     missedBallsDisplay.textContent = 'Missed balls: 0';
     messageDisplay.textContent = '';
-    startBtn.style.display = 'none';
+    startBtn.style.visibility = 'hidden'; // Use visibility to prevent layout shift
     gameFrame.innerHTML = '';
     gameFrame.classList.remove('game-over');
     gameInterval = setInterval(gameLoop, spawnRate);
@@ -169,5 +169,5 @@ function endGame() {
     gameOverContainer.appendChild(congratsText);
     gameFrame.appendChild(gameOverContainer);
 
-    startBtn.style.display = 'block';
+    startBtn.style.visibility = 'visible'; // Make button visible again
 }
