@@ -146,6 +146,9 @@ function increaseDifficultyOverTime() {
 }
 
 function endGame() {
+    if (gameFrame.classList.contains('game-over')) {
+        return; // Game is already over
+    }
     clearInterval(gameInterval);
     clearInterval(gameTimer);
     gameFrame.classList.add('game-over');
