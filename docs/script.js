@@ -2,8 +2,6 @@ const BACKGROUND_IMAGES = [
     'magic-eye-stereograms-1.jpg',
     'magic-eye-stereograms-2.jpg',
     'magiceye2.jpg',
-    'stock_pegasus_800x600.png.webp',
-    'TELEMMGLPICT000358958954_17023851863470_trans_NvBQzQNjv4BqRyujx91_R0fAKmrxXxzoxc-r-OmIwRD69dNBEeWEQ_w.jpeg.webp',
     'the-most-in-depth-realistic-magic-eye-ive-found-v0-92nqho9i3dcf1.jpeg.webp'
 ];
 
