@@ -18,6 +18,16 @@ const RAINBOW_COLORS = [
     '#32CD32', '#FFD700', '#FF4500', '#1E90FF', '#008080'
 ];
 
+const CONGRATS_PHRASES = [
+    "Great effort!",
+    "Nice shot!",
+    "Smooth move!",
+    "Well played!",
+    "Nice try!",
+    "Excellent game!",
+    "Superb!"
+];
+
 startBtn.addEventListener('click', startGame);
 
 function startGame() {
@@ -118,6 +128,7 @@ function increaseDifficultyOverTime() {
 function endGame() {
     clearInterval(gameInterval);
     clearInterval(gameTimer);
-    messageDisplay.textContent = 'Nice try!';
+    const randomPhrase = CONGRATS_PHRASES[Math.floor(Math.random() * CONGRATS_PHRASES.length)];
+    messageDisplay.textContent = randomPhrase;
     startBtn.style.display = 'block';
 }
