@@ -57,8 +57,8 @@ body {
 #missed-balls {
     margin-top: 10px;
     font-size: 1.2em;
-    color: #0099FF; /* Same color as button */
-    font-weight: bold; /* Same bold font as button */
+    color: #FFFFFF; /* White */
+    font-weight: bold; /* Keep it bold */
 }
 
 #message {
