@@ -3,7 +3,7 @@ body {
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background: linear-gradient(135deg, #e0c3fc 0%, #8ec5fc 100%); /* Modern colorful pastel gradient */
+    background: linear-gradient(135deg, #6200EA 0%, #9C27B0 100%); /* Vibrant deep purple-to-violet gradient */
     margin: 0;
     font-family: sans-serif;
 }
