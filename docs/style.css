@@ -5,6 +5,7 @@ body {
     height: 100vh;
     margin: 0;
     font-family: sans-serif;
+    overflow: hidden; /* Prevent scrolling/dragging the page on mobile */
 }
 
 #game-container {
@@ -115,4 +116,12 @@ body {
     margin-top: 10px;
     font-size: 1.5em;
     color: green;
+}
+
+/* Mobile Devices Optimization */
+@media (max-width: 600px) {
+    #game-frame {
+        width: 95vw; /* Slightly wider on mobile */
+        height: 55vh; /* Significantly shorter to fit button and text without scrolling */
+    }
 }
