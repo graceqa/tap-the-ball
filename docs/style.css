@@ -39,7 +39,7 @@ body {
     left: 0;
     right: 0;
     bottom: 0;
-    background: rgba(243, 243, 243, 0.8); /* Even lighter semi-transparent gray (f3f3f3-like) */
+    background: rgba(239, 239, 239, 0.8); /* Light semi-transparent gray (efefef-like) */
     z-index: 1;
 }
 
