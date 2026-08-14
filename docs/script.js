@@ -30,6 +30,7 @@ let maxBalls = 1;
 let ballLifetime = 2000;
 let timeElapsed = 0;
 let gameTimer;
+let isGameOver = false;
 
 const RAINBOW_COLORS = [
     '#FF0000', '#FF7F00', '#FFFF00', '#00FF00', '#0000FF', 
@@ -56,6 +57,7 @@ function startGame() {
     maxBalls = 1;
     ballLifetime = 2000;
     timeElapsed = 0;
+    isGameOver = false;
     missedBallsDisplay.textContent = 'Missed balls: 0';
     messageDisplay.textContent = '';
     startBtn.style.visibility = 'hidden'; // Use visibility to prevent layout shift
@@ -116,6 +118,7 @@ function createBall() {
     ballsOnScreen++;
 
     setTimeout(() => {
+        if (isGameOver) return; // Do nothing if the game is already over
         if (gameFrame.contains(ball)) {
             ball.remove();
             missedBalls++;
@@ -146,9 +149,10 @@ function increaseDifficultyOverTime() {
 }
 
 function endGame() {
-    if (gameFrame.classList.contains('game-over')) {
+    if (isGameOver) {
         return; // Game is already over
     }
+    isGameOver = true;
     clearInterval(gameInterval);
     clearInterval(gameTimer);
     gameFrame.classList.add('game-over');
