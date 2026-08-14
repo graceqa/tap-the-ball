@@ -158,7 +158,7 @@ function endGame() {
 
     const gameOverTitle = document.createElement('div');
     gameOverTitle.classList.add('game-over-title');
-    gameOverTitle.textContent = 'Game Over';
+    gameOverTitle.textContent = 'GAME OVER';
 
     const randomPhrase = CONGRATS_PHRASES[Math.floor(Math.random() * CONGRATS_PHRASES.length)];
     const congratsText = document.createElement('div');
