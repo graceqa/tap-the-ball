@@ -75,20 +75,21 @@ function createBall() {
     const ball = document.createElement('div');
     ball.classList.add('ball');
     
+    const ballSize = 8 * Math.min(window.innerWidth, window.innerHeight) / 100;
     let x, y, isValidPosition;
     let maxRetries = 20;
     let retries = 0;
 
     do {
-        x = Math.random() * (gameFrame.clientWidth - 50);
-        y = Math.random() * (gameFrame.clientHeight - 50);
+        x = Math.random() * (gameFrame.clientWidth - ballSize);
+        y = Math.random() * (gameFrame.clientHeight - ballSize);
         isValidPosition = true;
         const existingBalls = document.querySelectorAll('.ball');
         for (const existingBall of existingBalls) {
             const existingX = parseFloat(existingBall.style.left);
             const existingY = parseFloat(existingBall.style.top);
             const distance = Math.sqrt(Math.pow(x - existingX, 2) + Math.pow(y - existingY, 2));
-            if (distance < 50) { // 50 is the ball's diameter
+            if (distance < ballSize) { // Use dynamic ballSize
                 isValidPosition = false;
                 break;
             }
@@ -97,7 +98,6 @@ function createBall() {
     } while (!isValidPosition && retries < maxRetries);
 
     if (!isValidPosition) {
-        // Could not find a valid position after maxRetries, so don't spawn a ball this time.
         return;
     }
 
@@ -116,7 +116,7 @@ function createBall() {
     ballsOnScreen++;
 
     setTimeout(() => {
-        if (isGameOver) return; // Do nothing if the game is already over
+        if (isGameOver) return;
         if (gameFrame.contains(ball)) {
             ball.remove();
             missedBalls++;

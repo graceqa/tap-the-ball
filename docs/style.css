@@ -12,24 +12,27 @@ body {
 }
 
 #game-frame {
-    width: 800px; /* Fixed width */
-    height: 600px; /* Fixed height */
-    border: 1px solid #efefef; /* Thin light gray border */
+    width: 90vw;
+    height: 75vh;
+    max-width: 800px;
+    max-height: 600px;
+    border: 1px solid #efefef;
     position: relative;
     margin: 0 auto;
     background-color: #fff;
-    box-shadow: 0 10px 20px rgba(0,0,0,0.2), 0 6px 6px rgba(0,0,0,0.23); /* Enhanced shadow */
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2), 0 6px 6px rgba(0,0,0,0.23);
     border-radius: 8px;
+    overflow: hidden; /* Keep balls contained */
 }
 
 .ball {
-    width: 50px;
-    height: 50px;
+    width: 8vmin; /* Responsive ball size */
+    height: 8vmin; /* Responsive ball size */
     border-radius: 50%;
     position: absolute;
     cursor: pointer;
     background-image: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.5), rgba(255,255,255,0));
-    box-shadow: 0 5px 10px rgba(0,0,0,0.25); /* Drop shadow for balls */
+    box-shadow: 0 5px 10px rgba(0,0,0,0.25);
 }
 
 #game-frame.game-over::after {
@@ -39,7 +42,7 @@ body {
     left: 0;
     right: 0;
     bottom: 0;
-    background: rgba(239, 239, 239, 0.8); /* Light semi-transparent gray (efefef-like) */
+    background: rgba(239, 239, 239, 0.8);
     z-index: 1;
 }
 
@@ -49,62 +52,63 @@ body {
     left: 50%;
     transform: translate(-50%, -50%);
     z-index: 2;
-    color: #FFFFFF; /* Changed back to white */
+    color: #FFFFFF;
     text-align: center;
+    width: 90%;
 }
 
 .game-over-title {
-    font-size: 3em;
+    font-size: clamp(2.5em, 10vw, 4em); /* Responsive font size */
     font-weight: bold;
     margin: 0;
-    text-transform: uppercase; /* ALL CAPS */
-    text-shadow: 2px 2px 8px rgba(0,0,0,0.8); /* Strong shadow for readability on light bg */
+    text-transform: uppercase;
+    text-shadow: 2px 2px 8px rgba(0,0,0,0.8);
 }
 
 .congrats-text {
-    font-size: 1.5em;
+    font-size: clamp(1.2em, 5vw, 1.8em); /* Responsive font size */
     margin-top: 10px;
-    text-shadow: 1px 1px 4px rgba(0,0,0,0.8); /* Strong shadow for readability on light bg */
+    text-shadow: 1px 1px 4px rgba(0,0,0,0.8);
 }
 
 #start-btn {
-    margin: 20px auto; /* Centered with margin */
+    margin: 20px auto;
     padding: 12px 24px;
-    font-size: 1.2em;
+    font-size: clamp(1em, 4vw, 1.2em); /* Responsive font size */
     cursor: pointer;
-    background: linear-gradient(to bottom, #44ccff 0%, #0088ff 50%, #0055cc 100%); /* Multi-stop glossy gradient */
+    background: linear-gradient(to bottom, #44ccff 0%, #0088ff 50%, #0055cc 100%);
     color: white;
     font-weight: bold;
     border: none;
-    border-radius: 25px; /* Rounded edges */
+    border-radius: 25px;
     box-shadow: 0 8px 16px rgba(0,0,0,0.3), 
-                inset 0 2px 0 rgba(255,255,255,0.5), /* Top white highlight */
-                inset 0 -3px 0 rgba(0,0,0,0.2); /* Bottom dark thickness shadow */
+                inset 0 2px 0 rgba(255,255,255,0.5),
+                inset 0 -3px 0 rgba(0,0,0,0.2);
     transition: background 0.2s, transform 0.1s, box-shadow 0.1s;
-    display: block; /* Make it a block element to center with margin */
-    text-shadow: 1px 1px 2px rgba(0,0,0,0.3); /* Drop shadow for button text */
+    display: block;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
 }
 
 #start-btn:hover {
-    background: linear-gradient(to bottom, #55d4ff 0%, #0099ff 50%, #0066ee 100%); /* Slightly brighter on hover */
+    background: linear-gradient(to bottom, #55d4ff 0%, #0099ff 50%, #0066ee 100%);
     box-shadow: 0 10px 20px rgba(0,0,0,0.35), 
                 inset 0 2px 0 rgba(255,255,255,0.5), 
                 inset 0 -3px 0 rgba(0,0,0,0.2);
 }
 
 #start-btn:active {
-    transform: scale(0.97); /* Press effect */
+    transform: scale(0.97);
     box-shadow: 0 4px 8px rgba(0,0,0,0.3), 
                 inset 0 1px 0 rgba(255,255,255,0.3), 
-                inset 0 -1px 0 rgba(0,0,0,0.2); /* Reduced shadows on click */
+                inset 0 -1px 0 rgba(0,0,0,0.2);
 }
 
 #missed-balls {
     margin-top: 10px;
-    font-size: 1.2em;
-    color: #FFFFFF; /* White */
-    font-weight: bold; /* Keep it bold */
-    text-shadow: 2px 2px 4px rgba(0,0,0,0.7); /* Drop shadow for visibility */
+    font-size: clamp(1em, 4vw, 1.2em); /* Responsive font size */
+    color: #FFFFFF;
+    font-weight: bold;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
 }
 
 #message {
