@@ -41,6 +41,7 @@ function startGame() {
     messageDisplay.textContent = '';
     startBtn.style.display = 'none';
     gameFrame.innerHTML = '';
+    gameFrame.classList.remove('game-over');
     gameInterval = setInterval(gameLoop, spawnRate);
     gameTimer = setInterval(increaseDifficultyOverTime, 1000);
 }
@@ -128,7 +129,23 @@ function increaseDifficultyOverTime() {
 function endGame() {
     clearInterval(gameInterval);
     clearInterval(gameTimer);
+    gameFrame.classList.add('game-over');
+
+    const gameOverContainer = document.createElement('div');
+    gameOverContainer.classList.add('game-over-container');
+
+    const gameOverTitle = document.createElement('div');
+    gameOverTitle.classList.add('game-over-title');
+    gameOverTitle.textContent = 'Game Over';
+
     const randomPhrase = CONGRATS_PHRASES[Math.floor(Math.random() * CONGRATS_PHRASES.length)];
-    messageDisplay.textContent = randomPhrase;
+    const congratsText = document.createElement('div');
+    congratsText.classList.add('congrats-text');
+    congratsText.textContent = randomPhrase;
+
+    gameOverContainer.appendChild(gameOverTitle);
+    gameOverContainer.appendChild(congratsText);
+    gameFrame.appendChild(gameOverContainer);
+
     startBtn.style.display = 'block';
 }

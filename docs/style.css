@@ -37,8 +37,40 @@ body {
     background-image: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.5), rgba(255,255,255,0));
 }
 
+#game-frame.game-over::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(128, 128, 128, 0.7); /* Semi-transparent gray */
+    z-index: 1; /* Make sure it's on top of the balls */
+}
+
+.game-over-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2; /* On top of the gray overlay */
+    color: white;
+    text-align: center;
+}
+
+.game-over-title {
+    font-size: 3em;
+    font-weight: bold;
+    margin: 0;
+}
+
+.congrats-text {
+    font-size: 1.5em;
+    margin-top: 10px;
+}
+
 #start-btn {
-    margin-top: 20px;
+    margin: 20px auto; /* Centered with margin */
     padding: 12px 24px;
     font-size: 1.2em;
     cursor: pointer;
@@ -49,6 +81,7 @@ body {
     border-radius: 25px; /* Rounded edges */
     box-shadow: 0 4px 6px rgba(0,0,0,0.1);
     transition: background-color 0.2s, transform 0.1s;
+    display: block; /* Make it a block element to center with margin */
 }
 
 #start-btn:hover {
